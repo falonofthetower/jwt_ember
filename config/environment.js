@@ -23,6 +23,18 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-simple-auth'] = {
+    authorizer: 'authorizer:jwt'
+  };
+
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: 'http://localhost:3000/auth_user',
+    serverTokenRefreshEndpoint: '/api/token-refresh',
+    identificationField: 'email',
+    refreshAccessTokens: true,
+    refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
