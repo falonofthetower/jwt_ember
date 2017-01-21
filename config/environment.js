@@ -29,13 +29,14 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth-token'] = {
     serverTokenEndpoint: 'http://localhost:3000/auth_user',
-    serverTokenRefreshEndpoint: '/api/token-refresh',
+    serverTokenRefreshEndpoint: 'http://localhost:3000/auth_user',
     identificationField: 'email',
     refreshAccessTokens: true,
     refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
   };
 
   if (environment === 'development') {
+    ENV.APP.host = "http://localhost:3000";
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
