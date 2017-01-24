@@ -1,1 +1,6 @@
-{{outlet}}
+<h4>Todos</h4>
+<ul>
+  {{#each model as |todo|}}
+    <li>{{todo.task}}</li>
+  {{/each}}
+</ul>
