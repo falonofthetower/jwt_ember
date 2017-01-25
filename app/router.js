@@ -10,7 +10,13 @@ Router.map(function() {
   this.route('/');
   this.route('login');
   this.route('index');
-  this.route('todos');
+  this.route('todos', function() {
+    this.route('todo', { path: ':todo_id'}, function() {
+      this.route('show');
+      this.route('edit');
+    });
+    this.route('new');
+  });
 });
 
 export default Router;

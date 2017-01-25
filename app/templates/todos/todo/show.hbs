@@ -1,0 +1,6 @@
+<div>
+  {{model.task}}
+</div>
+
+<button {{action 'destroyTodo'}}>Destroy todo</button>
+{{#link-to 'todos.todo.edit' model tagName="button"}}Edit todo{{/link-to}}

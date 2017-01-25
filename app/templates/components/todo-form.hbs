@@ -1,0 +1,9 @@
+{{! templates/components/todo-form.hbs }}
+<div class="todo-view">
+  Task: {{input value=model.task update=(action (mut model.name))}}
+  <br>
+  Points: {{input value=model.points update=(action (mut model.level))}}
+  <br>
+</div>
+
+<button {{action 'save'}}>Save</button>
