@@ -9,6 +9,17 @@ const { String: { pluralize, underscore } } = Ember;
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   authorizer: 'authorizer:jwt',
   host: config.APP.host,
+  headers: {
+    'Content-Type': 'application/vnd.api+json',
+    'Accept': 'application/vnd.api+json'
+  },
+
+  // headersForRequest() {
+  //   return {
+  //     'Content-Type': 'application/vnd.api+json',
+  //     'Accept': 'application/vnd.api+json'
+  //   }
+  // },
 
   pathForType(type) {
     return pluralize(underscore(type));
