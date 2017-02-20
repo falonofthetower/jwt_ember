@@ -3,7 +3,7 @@
 <ul>
   {{#each model as |todo|}}
     {{#link-to 'todos.todo.show' todo  tagName='li' class="todo list-unstyled"}}
-      {{todo.task}}
+      {{todo.task}} | {{todo.points}}
     {{/link-to}}
   {{/each}}
 </ul>

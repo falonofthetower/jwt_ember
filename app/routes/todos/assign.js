@@ -1,15 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model (params) {
+  model(params) {
     return Ember.RSVP.hash({
-      users: this.store.findAll('user'),
-      todo: this.store.findRecord('todo', params.todo_id)
+      todo: this.store.findRecord('todo', params.todo_id),
+      users: this.store.findAll('user')
     });
   },
-
   setupController(controller, models) {
-    controller.set('users', models.users);
+    controller.set("users", models.users);
     controller.set("todo", models.todo);
   }
 });

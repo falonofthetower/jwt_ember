@@ -13,8 +13,12 @@ Router.map(function() {
   this.route('todos', function() {
     this.route('todo', { path: ':todo_id'}, function() {
       this.route('show');
+      this.route('assign');
       this.route('edit');
     });
+    this.route('new');
+  });
+  this.route('assignments', function() {
     this.route('new');
   });
 });

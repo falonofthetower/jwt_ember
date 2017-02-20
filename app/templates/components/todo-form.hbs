@@ -4,6 +4,16 @@
   <br>
   Points: {{input value=model.points update=(action (mut model.level))}}
   <br>
+  <div>
+    Assign to:
+    {{#x-select action='selectUser' id='user-select' value=model.assignee}}
+      {{#each users as |user|}}
+        {{#x-option value=user}}
+          <li>{{user.email}}</li>
+        {{/x-option}}
+      {{/each}}
+    {{/x-select}}
+  </div>
 </div>
 
 <button {{action 'save'}}>Save</button>

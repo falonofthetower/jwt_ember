@@ -24,7 +24,8 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth'] = {
-    authorizer: 'authorizer:jwt'
+    authorizer: 'authorizer:jwt',
+    routeAfterAuthentication: '/todos'
   };
 
   ENV['ember-simple-auth-token'] = {

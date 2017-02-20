@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   actions: {
-    save() {
-      this.attrs.save();
-    }  }
+    assignTask(user, todo) {
+      this.assignTask(user, todo)
+    }
+  }
 });

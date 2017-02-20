@@ -10,6 +10,5 @@ export default Ember.Route.extend({
 
   setupController(controller, models) {
     controller.set('users', models.users);
-    controller.set("todo", models.todo);
   }
 });

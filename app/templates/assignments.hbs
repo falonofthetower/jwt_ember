@@ -1,0 +1,20 @@
+<h4>Assignments</h4>
+{{#link-to 'assignments.new' tagName="button"}}New Assignment{{/link-to}}
+<ul>
+  {{#each model.assignments as |assignment|}}
+    <h3>Task: {{assignment.todo.task}}</h3>
+    <ul>
+      <li>Due: {{assignment.due}}</li>
+      <li>Giver: {{assignment.assigner.email}}</li>
+      <li>Points: {{assignment.todo.points}}</li>
+    </ul>
+  {{/each}}
+  {{#each model.todos as |todo|}}
+    {{#link-to 'todos.todo.show' todo  tagName='li' class="todo list-unstyled"}}
+      {{todo.task}} | {{todo.points}}
+    {{/link-to}}
+  {{/each}}
+</ul>
+<div>
+  {{outlet}}
+</div>

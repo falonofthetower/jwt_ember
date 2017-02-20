@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   actions: {
-    save() {
-      this.attrs.save();
-    }  }
+    selectTodo(value, event) {
+      this.set('model.todo', value);
+    }
+  }
 });

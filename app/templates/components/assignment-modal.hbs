@@ -1,0 +1,4 @@
+Assign {{todo.task}} to: 
+{{#each users as |user|}}
+  <button {{action "assignTask" user todo}}>{{user.email}}</button>
+{{/each}}
