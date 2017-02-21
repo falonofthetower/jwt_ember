@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('assignment', 'Unit | Model | assignment', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:assigner', 'model:assignee', 'model:todo']
 });
 
 test('it exists', function(assert) {

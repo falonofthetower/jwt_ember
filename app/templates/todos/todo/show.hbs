@@ -4,5 +4,5 @@
 
 <button {{action 'destroyTodo'}}>Destroy todo</button>
 {{#link-to 'todos.todo.edit' model tagName="button"}}Edit todo{{/link-to}}
-{{#link-to 'todos.todo.assign' todo=todo users=users tagName="button"}}Assign todo{{/link-to}}
+{{#link-to 'todos.todo.assign' tagName="button"}}Assign todo{{/link-to}}
 {{outlet}}

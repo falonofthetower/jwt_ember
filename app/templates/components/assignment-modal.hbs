@@ -1,4 +1,5 @@
-Assign {{todo.task}} to: 
+Assign {{yield}} to: 
 {{#each users as |user|}}
+  {{todo.task}}
   <button {{action "assignTask" user todo}}>{{user.email}}</button>
 {{/each}}

@@ -1,2 +1,4 @@
-{{models.todo.task}}
-{{assignment-modal users=model.users todo=model.todo assignTask=(action "assignTask")}}
+{{#assignment-modal users=users todo=model assignTask=(action "assignTask")}}
+  {{model.task}}
+{{/assignment-modal}}
+
