@@ -1,12 +1,13 @@
 import Ember from 'ember';
 
+const { inject: { service }, Component } = Ember;
+
 export default Ember.Controller.extend({
+  currentUser: service('current-user'),
   actions: {
     assignTask(user, todo) {
-      console.log(todo);
       let assignment = this.store.createRecord('assignment', {
         assignee: user,
-        assigner: user,
         todo: todo
       });
       assignment.save().then(()=>{
