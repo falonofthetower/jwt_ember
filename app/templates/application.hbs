@@ -1,11 +1,21 @@
 {{!-- app/templates/application.hbs --}}
-<div class="menu">
+<ul class="nav nav-tabs">
   {{#if session.isAuthenticated}}
-    <a {{action 'invalidateSession'}}>Logout</a>
+    {{#menu-tab}}
+      {{#link-to 'assignments'}}Assignments{{/link-to}}
+    {{/menu-tab}}
+    {{#menu-tab}}
+      {{#link-to 'todos'}}Todos{{/link-to}}
+    {{/menu-tab}}
+    {{#menu-tab}}
+      <a {{action 'invalidateSession'}}>Logout</a>
+    {{/menu-tab}}
   {{else}}
-    {{#link-to 'login'}}Login{{/link-to}}
-    {{/if}}
-</div>
+    {{#menu-tab}}
+      {{#link-to 'login'}}Login{{/link-to}}
+    {{/menu-tab}}
+  {{/if}}
+</ul>
 <div class="main">
   {{outlet}}
 </div>
