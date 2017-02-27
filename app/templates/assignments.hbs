@@ -1,7 +1,7 @@
 <ul>
   {{#each model as |assignment|}}
     <li>
-      {{assignment.todo.task}} | {{assignment.assigner.email}} | {{assignment.assignee.email}}
+      {{assignment.todo.task}} | {{assignment.assigner.email}} | {{assignment.assignee.email}} |  {{#unless assignment.finished}}<button {{action "markComplete" assignment}}>Mark Complete</button>{{/unless}}
     </li>
   {{/each}}
 </ul>

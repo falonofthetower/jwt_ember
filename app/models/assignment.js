@@ -6,5 +6,6 @@ export default DS.Model.extend({
   // todo: DS.belongsTo('todo', { async: true })
   assigner: DS.belongsTo('user', { async: true }),
   assignee: DS.belongsTo('user', { async: true }),
-  todo: DS.belongsTo('todo', { async: true })
+  todo: DS.belongsTo('todo', { async: true }),
+  finished: DS.attr('boolean')
 });
