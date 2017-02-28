@@ -57,10 +57,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.host = "https://task-master-api-staging.herokuapp.com/";
+    ENV.APP.host = "https://task-master-api-staging.herokuapp.com";
     ENV['ember-simple-auth-token'] = {
-      serverTokenEndpoint: 'https://task-master-api-staging.herokuapp.com/',
-      serverTokenRefreshEndpoint: 'https://task-master-api-staging.herokuapp.com/',
+      serverTokenEndpoint: 'https://task-master-api-staging.herokuapp.com',
+      serverTokenRefreshEndpoint: 'https://task-master-api-staging.herokuapp.com',
       identificationField: 'email',
       refreshAccessTokens: true,
       refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
