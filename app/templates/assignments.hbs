@@ -1,8 +1,6 @@
-<ul>
+<div class="col-md-4">
   {{#each model as |assignment|}}
-    <li>
-      {{assignment.todo.task}} | {{assignment.assigner.email}} | {{assignment.assignee.email}} |  {{#unless assignment.finished}}<button {{action "markComplete" assignment}}>Mark Complete</button>{{/unless}}
-    </li>
+    {{my-assignment assignment=assignment}}
   {{/each}}
-</ul>
+</div>
 {{outlet}}
