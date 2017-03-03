@@ -7,8 +7,18 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('/');
   this.route('login');
-  this.route('todos');
+  this.route('index');
+  this.route('todos', function() {
+    this.route('todo', { path: ':todo_id'}, function() {
+      this.route('show');
+      this.route('assign');
+      this.route('edit');
+    });
+    this.route('new');
+  });
+  this.route('assignments');
 });
 
 export default Router;

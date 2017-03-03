@@ -1,0 +1,28 @@
+{{! templates/components/assignment-form.hbs }}
+<div class="assignment-form-view">
+  {{#x-select action 'selectTodo' id="todo-select" value=model.todo as |xs|}}
+    <option>Nothing</option>
+    {{#each todos as |todo|}}
+      {{#xs.option value=todo}}
+        {{todo.task}}
+      {{/xs.option}}
+    {{/each}}
+  {{/x-select}}
+  {{#x-select action='selectAssignee' id="assignee-select" value=model.assignee as |xs|}}
+    <option>Nothing</option>
+    {{#each users as |user|}}
+      {{#xs.option value=user}}
+        {{user.email}}
+      {{/xs.option}}
+    {{/each}}
+  {{/x-select}}
+  {{#x-select action='selectAssigner' id="todo-select" value=model.assigner as |xs|}}
+    <option>Nothing</option>
+    {{#each users as |user|}}
+      {{#xs.option value=user}}
+        {{user.email}}
+      {{/xs.option}}
+    {{/each}}
+  {{/x-select}}
+</div>
+<button {{action 'save'}}>Save</button>

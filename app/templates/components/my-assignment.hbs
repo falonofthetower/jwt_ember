@@ -1,0 +1,20 @@
+<div class="frame">
+  <div class="left">
+    {{gravatar-image email=assignment.assigner.email size=50 class="img-circle"}}
+  </div>
+  <div class="right">
+    <span class="helper"></span>
+    <button class="flat round-right">
+      <i class="glyphicon-chevron-down glyphicon"></i>
+    </button>
+  </div>
+  <div class="right potential points">
+    <span class="helper"></span>
+    <span class="potential points">{{assignment.todo.points}}<small>pts</small></span>
+  </div>
+  <div class="middle">
+    <span class="helper"></span>
+    <button class="flat round-left" {{action "markComplete" assignment}} id="unchecked"> <span class="glyphicon {{if isChecked "glyphicon-ok" "glyphicon-unchecked"}}" aria-hidden="true"></span>
+      <span class="text">{{assignment.todo.task}}</span></button>
+  </div>
+</div>

@@ -1,1 +1,12 @@
-{{outlet}}
+<h4>Todos</h4>
+{{#link-to 'todos.new' tagName="button"}}New Todo{{/link-to}}
+<ul>
+  {{#each model as |todo|}}
+    {{#link-to 'todos.todo.show' todo  tagName='li' class="todo list-unstyled"}}
+      {{todo.task}} | {{todo.points}}
+    {{/link-to}}
+  {{/each}}
+</ul>
+<div>
+  {{outlet}}
+</div>
