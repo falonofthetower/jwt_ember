@@ -1,5 +1,8 @@
 Assign {{yield}} to: 
-{{#each users as |user|}}
-  {{todo.task}}
-  <button {{action "assignTask" user todo}}>{{user.email}}</button>
-{{/each}}
+<div class="row">
+  {{#each users as |user|}}
+    <div class="col-lg-4">
+      <button {{action "assignTask" user todo}}>{{user.email}}</button>
+    </div>
+  {{/each}}
+</div>

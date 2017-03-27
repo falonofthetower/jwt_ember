@@ -3,6 +3,23 @@
 
 @import "ember-bootstrap/bootstrap";
 
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #34495e;
+}
+
+.btn {
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 17px;
+  margin: 10px;
+}
+
+.todo-items > th, td {
+  border-bottom: 1px solid #ddd;
+  padding: 7px;
+}
+
 .assignments {
   list-style: none;
   font: Helvetica;

@@ -1,12 +1,31 @@
 <h4>Todos</h4>
-{{#link-to 'todos.new' tagName="button"}}New Todo{{/link-to}}
-<ul>
-  {{#each model as |todo|}}
-    {{#link-to 'todos.todo.show' todo  tagName='li' class="todo list-unstyled"}}
-      {{todo.task}} | {{todo.points}}
-    {{/link-to}}
-  {{/each}}
-</ul>
-<div>
-  {{outlet}}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4">
+      {{#link-to 'todos.new' tagName="button" class="btn"}}New Todo{{/link-to}}
+      <table class="todo-items">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model as |todo|}}
+            <tr>
+              {{#link-to 'todos.todo.show' todo  tagName='td' class="todo list-unstyled"}}
+                {{todo.task}}
+              {{/link-to}}
+              <td>{{todo.points}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-8">
+      <div>
+        {{outlet}}
+      </div>
+    </div>
+  </div>
 </div>
