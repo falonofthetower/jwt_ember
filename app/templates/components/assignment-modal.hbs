@@ -2,7 +2,7 @@ Assign {{yield}} to:
 <div class="row">
   {{#each users as |user|}}
     <div class="col-lg-4">
-      <button {{action "assignTask" user todo}}>{{user.email}}</button>
+      <button {{action "assignTask" user todo}} class="btn">{{user.email}}</button>
     </div>
   {{/each}}
 </div>
