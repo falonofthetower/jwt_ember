@@ -1,0 +1,16 @@
+<h2>Create New Account and Sign In</h2>
+<form {{action "submit" on="submit"}}>
+  <label for="email">Email< /label>
+  {{input value=user.email placeholder="enter email"}}
+
+  <label for="password">Password< /label>
+  {{input value=user.password type="password" placeholder="enter password"}}
+
+  <label for="passwordConfirmation">Password Confirmation< /label>
+  {{input value=user.passwordConfirmation type="password" placeholder="enter password again"}}
+  <button type="submit" class="btn">Login< /button>
+</form>
+
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}

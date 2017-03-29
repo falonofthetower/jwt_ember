@@ -9,6 +9,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('/');
   this.route('login');
+  this.route('signup');
   this.route('index');
   this.route('todos', function() {
     this.route('todo', { path: ':todo_id'}, function() {
