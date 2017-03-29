@@ -17,8 +17,8 @@ export default Ember.Component.extend({
     }
   },
   actions: {
-    markComplete(task) {
-      task.set('finished', true);
+    markComplete(task, status) {
+      task.set('status', status);
       task.save().then(()=> {
         this.set('isChecked', true);
         this.set('isCrossed', true);

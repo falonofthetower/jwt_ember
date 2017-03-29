@@ -14,7 +14,7 @@
   </div>
   <div class="middle">
     <span class="helper"></span>
-    <button class="flat round-left" {{action "markComplete" assignment}} id="unchecked"> <span class="glyphicon {{if isChecked "glyphicon-ok" "glyphicon-unchecked"}}" aria-hidden="true"></span>
+    <button class="flat round-left" {{action "markComplete" assignment status}} id="unchecked"> <span class="glyphicon {{if isChecked "glyphicon-ok" "glyphicon-unchecked"}}" aria-hidden="true"></span>
       <span class="text {{if isCrossed "strikeout"}}">{{assignment.todo.task}}</span></button>
   </div>
 </div>

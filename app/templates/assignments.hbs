@@ -1,6 +1,19 @@
 <div class="col-md-4">
-  {{#each model as |assignment|}}
-    {{my-assignment assignment=assignment}}
+  <h2>Assigned</h2>
+  {{#each requests as |request|}}
+    {{my-assignment assignment=request status="pending"}}
+  {{/each}}
+</div>
+<div class="col-md-4">
+  <h2>Completed</h2>
+  {{#each pendings as |pending|}}
+    {{my-request request=pending}}
+  {{/each}}
+</div>
+<div class="col-md-4">
+  <h2>Closed</h2>
+  {{#each closings as |closed|}}
+    {{my-request request=closed}}
   {{/each}}
 </div>
 {{outlet}}

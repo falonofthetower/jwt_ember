@@ -19,6 +19,7 @@ Router.map(function() {
     this.route('new');
   });
   this.route('assignments');
+  this.route('requests');
 });
 
 export default Router;

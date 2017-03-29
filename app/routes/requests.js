@@ -1,33 +1,34 @@
 import Ember from 'ember';
+
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model (params) {
     return Ember.RSVP.hash({
-      requests: this.store.query('my-assignment', {
+      requested: this.store.query('my-request', {
         include: 'assignee,assigner,todo',
         filter: {
           status: "requested"
         }
       }),
-      pendings: this.store.query('my-assignment', {
-        include: 'assignee,todo,assigner',
+      pending: this.store.query('my-request', {
+        include: 'assignee,assigner,todo',
         filter: {
           status: "pending"
         }
       }),
-      closings: this.store.query('my-assignment', {
-        include: 'assignee,todo,assigner',
+      closed: this.store.query('my-request', {
+        include: 'assignee,assigner,todo',
         filter: {
-          status: "accepted"
+          status: "accepted",
         }
-      }),
+      })
     });
   },
 
   setupController(controller, models) {
-    controller.set('requests', models.requests);
-    controller.set('pendings', models.pendings);
-    controller.set('closings', models.closings);
+    controller.set('requested', models.requested);
+    controller.set('pending', models.pending);
+    controller.set('closed', models.closed);
   }
 });
