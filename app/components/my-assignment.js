@@ -1,6 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  // cableService: Ember.inject.service('cable'),
+
+  // setupSubscription: Ember.on('init', function() {
+  //   var consumer = this.get('cableService').createConsumer('ws://localhost:3000/websocket');
+  //   var subscription = consumer.subscriptions.create("MessagesChannel", {
+  //     received: (data) => {
+  //       this.get('assignments').pushObject({data});
+  //     }
+  //   });
+  // }),
+
   isChecked: false,
   isCrossed: false,
 

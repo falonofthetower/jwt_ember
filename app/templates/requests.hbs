@@ -1,19 +1,2 @@
-<div class="col-md-4">
-  <h2>Requested</h2>
-  {{#each requested as |request|}}
-    {{my-request request=request}}
-  {{/each}}
-</div>
-<div class="col-md-4">
-  <h2>Pending</h2>
-  {{#each pending as |pending|}}
-    {{my-assignment assignment=pending status="accepted"}}
-  {{/each}}
-</div>
-<div class="col-md-4">
-  <h2>Closed</h2>
-  {{#each closed as |close|}}
-    {{my-request request=close}}
-  {{/each}}
-</div>
+{{request-list requests=model}}
 {{outlet}}

@@ -26,6 +26,7 @@
     "broccoli-static-compiler": "^0.2.2",
     "ember-ajax": "^2.4.1",
     "ember-bootstrap": "1.0.0-alpha.4",
+    "ember-cable": "0.6.1",
     "ember-cli": "2.9.1",
     "ember-cli-app-version": "^2.0.0",
     "ember-cli-babel": "^5.1.7",

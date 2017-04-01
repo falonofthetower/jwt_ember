@@ -1,0 +1,19 @@
+<div class="col-md-4">
+<h2>Requested</h2>
+  {{#each assignedRequests as |request|}}
+    {{my-request request=request}}
+  {{/each}}
+</div>
+<div class="col-md-4">
+<h2>Pending</h2>
+  {{#each pendingRequests as |request|}}
+    {{my-assignment assignment=request status="accepted"}}
+  {{/each}}
+</div>
+<div class="col-md-4">
+<h2>Closed</h2>
+  {{#each closedRequests as |request|}}
+    {{my-request request=request}}
+  {{/each}}
+</div>
+{{yield}}
