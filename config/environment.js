@@ -39,7 +39,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.APP.host = "http://localhost:3000";
-    ENV.APP.websocket_host = "ws://localhost:3000/websocket";
+    ENV.APP.websocket_host = "wss://localhost:3000/websocket";
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
