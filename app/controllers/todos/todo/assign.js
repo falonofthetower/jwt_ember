@@ -8,7 +8,9 @@ export default Ember.Controller.extend({
     assignTask(user, todo) {
       let assignment = this.store.createRecord('assignment', {
         assignee: user,
-        todo: todo
+        todo: todo,
+        status: 'requested'
+
       });
       assignment.save().then(()=>{
         this.transitionToRoute('todos');

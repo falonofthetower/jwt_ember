@@ -13,14 +13,6 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     'Content-Type': 'application/vnd.api+json',
     'Accept': 'application/vnd.api+json'
   },
-
-  // headersForRequest() {
-  //   return {
-  //     'Content-Type': 'application/vnd.api+json',
-  //     'Accept': 'application/vnd.api+json'
-  //   }
-  // },
-
   pathForType(type) {
     return pluralize(underscore(type));
   }

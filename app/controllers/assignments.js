@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     var consumer = this.get('cableService').createConsumer(config.APP.websocket_host);
     var subscription = consumer.subscriptions.create("AssignmentsChannel", {
       received: (data) => {
-        this.get('store').findRecord('my-assignment', data.id).then(function(assignment) {
+        this.get('store').findRecord('assignment', data.id).then(function(assignment) {
           assignment.set('status', data.status);
         });
       }

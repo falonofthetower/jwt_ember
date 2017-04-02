@@ -14,7 +14,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   // }),
 
   model (params) {
-    return this.get('store').findAll('my-assignment', {
+    return this.get('store').findAll('assignment', {
         include: 'assignee,assigner,todo'
     })
     // return Ember.RSVP.hash({

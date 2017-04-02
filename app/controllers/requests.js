@@ -8,18 +8,11 @@ export default Ember.Controller.extend({
     var consumer = this.get('cableService').createConsumer(config.APP.websocket_host);
     var subscription = consumer.subscriptions.create("AssignmentsChannel", {
       received: (data) => {
-        this.get('store').findRecord('my-request', data.id).then(function(assignment) {
+        this.get('store').findRecord('assignment', data.id, { reload: true }).then(function(assignment) {
           assignment.set('status', data.status);
+          assignment.get('assigner');
         });
       }
     });
   })
-  // actions: {
-  //   markComplete(task) {
-  //     task.set('finished', true);
-  //     task.save().then(()=> {
-  //       alert('Task Complete');
-  //     });
-  //   }
-  // }
 });
