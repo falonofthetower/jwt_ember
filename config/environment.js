@@ -39,7 +39,7 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.APP.host = "http://localhost:3000";
-    ENV.APP.websocket_host = "wss://localhost:3000/websocket";
+    ENV.APP.websocket_host = "ws://localhost:3000/websocket";
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -60,7 +60,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.host = "https://task-master-api-staging.herokuapp.com";
-    ENV.APP.websocket_host = "ws://task-master-api-staging.herokuapp.com/websocket";
+    ENV.APP.websocket_host = "wss://task-master-api-staging.herokuapp.com/websocket";
     ENV['ember-simple-auth-token'] = {
       serverTokenEndpoint: 'https://task-master-api-staging.herokuapp.com/auth_user',
       serverTokenRefreshEndpoint: 'https://task-master-api-staging.herokuapp.com/auth_user',
