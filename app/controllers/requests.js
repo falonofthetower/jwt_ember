@@ -5,9 +5,11 @@ export default Ember.Controller.extend({
 
   setupSubscription: Ember.on('init', function() {
     var consumer = this.get('cableService').createConsumer('ws://localhost:3000/websocket');
-    var subscription = consumer.subscriptions.create("MessagesChannel", {
+    var subscription = consumer.subscriptions.create("AssignmentsChannel", {
       received: (data) => {
-        this.get('store').push({data});
+        this.get('store').findRecord('my-request', data.id).then(function(assignment) {
+          assignment.set('status', data.status);
+        });
       }
     });
   })
