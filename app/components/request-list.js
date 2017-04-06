@@ -7,30 +7,40 @@ export default Component.extend({
   currentUser: service('currentUser'),
   session: service('session'),
 
-  myRequests: Ember.computed('assigner', 'requests.@each.assigner.[]', function() {
-    let requestsArray = this.get('requests').toArray();
-    let user = this.get('currentUser').user
-
-    let filterPromise = Ember.RSVP.filter(requestsArray, request => {
-      return request.get('assigner').then( assigner => {
-        return assigner.id === user.id;
-      })
-    })
+  assignedRequests: Ember.computed('requests.@each.status', function() {
+    let user = this.get('currentUser').user;
+    const promise = Ember.RSVP.filter(this.get('requests').toArray(), request => {
+      let status = request.get('status');
+      return request.get('assigner').then((assigner) => {
+        return assigner === user && status === "requested"
+      });
+    });
     return DS.PromiseArray.create({
-      promise: filterPromise
+      promise: promise
     });
   }),
-
-  assignedRequests: Ember.computed('myRequests.@each.status', function() {
-    let requests = this.get('myRequests');
-    return requests.filterBy('status', "requested");
+  pendingRequests: Ember.computed('requests.@each.status', function() {
+    let user = this.get('currentUser').user;
+    const promise = Ember.RSVP.filter(this.get('requests').toArray(), request => {
+      let status = request.get('status');
+      return request.get('assigner').then((assigner) => {
+        return assigner === user && status === "pending"
+      });
+    });
+    return DS.PromiseArray.create({
+      promise: promise
+    });
   }),
-  pendingRequests: Ember.computed('myRequests.@each.status', function() {
-    let requests = this.get('myRequests');
-    return requests.filterBy('status', "pending");
-  }),
-  closedRequests: Ember.computed('myRequests.@each.status', function() {
-    let requests = this.get('myRequests');
-    return requests.filterBy('status', "accepted");
+  closedRequests: Ember.computed('requests.@each.status', function() {
+    let user = this.get('currentUser').user;
+    const promise = Ember.RSVP.filter(this.get('requests').toArray(), request => {
+      let status = request.get('status');
+      return request.get('assigner').then((assigner) => {
+        return assigner === user && status === "accepted"
+      });
+    });
+    return DS.PromiseArray.create({
+      promise: promise
+    });
   }),
 });

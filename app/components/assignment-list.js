@@ -6,30 +6,41 @@ const { inject: { service }, Component } = Ember;
 export default Component.extend({
   session:     service('session'),
   currentUser: service('currentUser'),
-  myAssignments: Ember.computed('assignee', 'assignments.@each.assignee.[]', function() {
-    let assignmentsArray = this.get('assignments').toArray();
-    let user = this.get('currentUser').user
 
-    let filterPromise = Ember.RSVP.filter(assignmentsArray, assignment => {
-      return assignment.get('assignee').then( assignee => {
-        return assignee.id === user.id
-      })
-    })
+  requestedAssignments: Ember.computed('assignments.@each.status', function() {
+    let user = this.get('currentUser').user;
+    const promise = Ember.RSVP.filter(this.get('assignments').toArray(), assignment => {
+      let status = assignment.get('status');
+      return assignment.get('assignee').then((assignee) => {
+        return assignee === user && status === "requested"
+      });
+    });
     return DS.PromiseArray.create({
-      promise: filterPromise
+      promise: promise
     });
   }),
-
-  requestedAssignments: Ember.computed('myAssignments.@each.status', function() {
-    let assignments = this.get('myAssignments');
-    return assignments.filterBy('status', "requested");
+  pendingAssignments: Ember.computed('assignments.@each.status', function() {
+    let user = this.get('currentUser').user;
+    const promise = Ember.RSVP.filter(this.get('assignments').toArray(), assignment => {
+      let status = assignment.get('status');
+      return assignment.get('assignee').then((assignee) => {
+        return assignee === user && status === "pending"
+      });
+    });
+    return DS.PromiseArray.create({
+      promise: promise
+    });
   }),
-  pendingAssignments: Ember.computed('myAssignments.@each.status', function() {
-    let assignments = this.get('myAssignments');
-    return assignments.filterBy('status', "pending");
-  }),
-  closedAssignments: Ember.computed('myAssignments.@each.status', function() {
-    let assignments = this.get('myAssignments');
-    return assignments.filterBy('status', "accepted");
+  closedAssignments: Ember.computed('assignments.@each.status', function() {
+    let user = this.get('currentUser').user;
+    const promise = Ember.RSVP.filter(this.get('assignments').toArray(), assignment => {
+      let status = assignment.get('status');
+      return assignment.get('assignee').then((assignee) => {
+        return assignee === user && status === "accepted"
+      });
+    });
+    return DS.PromiseArray.create({
+      promise: promise
+    });
   }),
 });
