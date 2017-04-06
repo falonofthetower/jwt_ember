@@ -1,47 +1,34 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+const { service } = Ember.inject;
+
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
-  // cableService: Ember.inject.service('cable'),
+  currentUser: service('currentUser'),
+  session: service('session'),
 
-  // setupSubscription: Ember.on('init', function() {
-  //   var consumer = this.get('cableService').createConsumer('ws://localhost:3000/websocket');
-  //   var subscription = consumer.subscriptions.create("MessagesChannel", {
-  //     received: (data) => {
-  //       this.get('assignments').pushObject({data});
-  //     }
-  //   });
-  // }),
+  beforeModel() {
+    return this._loadCurrentUser();
+  },
 
-  model (params) {
+  sessionAuthenticated() {
+    this._super(...arguments);
+    this._loadCurrentUser();
+  },
+
+  _loadCurrentUser() {
+    return this.get('currentUser').load().catch(() => this.get('session').invalidate());
+  },
+
+  model () {
     return this.get('store').findAll('assignment', {
-        include: 'assignee,assigner,todo'
+        include: 'assignee,assigner,todo',
+        filter: {
+          assignee_id: this.get('currentUser').user.id
+        }
     })
-    // return Ember.RSVP.hash({
-    //   requests: this.store.query('my-assignment', {
-    //     include: 'assignee,assigner,todo',
-    //     filter: {
-    //       status: "requested"
-    //     }
-    //   }),
-    //   pendings: this.store.query('my-assignment', {
-    //     include: 'assignee,todo,assigner',
-    //     filter: {
-    //       status: "pending"
-    //     }
-    //   }),
-    //   closings: this.store.query('my-assignment', {
-    //     include: 'assignee,todo,assigner',
-    //     filter: {
-    //       status: "accepted"
-    //     }
-    //   }),
-    // });
-  },//,
-
-  // setupController(controller, models) {
-  //   controller.set('model', models);
-  //   // controller.set('pendings', models.pendings);
-  //   // controller.set('closings', models.closings);
-  // }
+  },
+  setupController: function(controller, model) {
+    controller.set("assignments", model);
+  }
 });

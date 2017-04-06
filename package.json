@@ -60,6 +60,7 @@
     "ember-welcome-page": "^1.0.3",
     "emberx-select": "3.0.0",
     "inflection": "1.7.2",
+    "liquid-fire": "0.27.2",
     "loader.js": "^4.0.10",
     "lodash": "3.10.1",
     "silent-error": "1.0.1"

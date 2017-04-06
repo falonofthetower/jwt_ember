@@ -25,8 +25,13 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth'] = {
     authorizer: 'authorizer:jwt',
-    routeAfterAuthentication: '/assignments',
-    baseURL: '/login'
+    authenticationRoute: 'login',
+    // routeAfterAuthentication: '/assignments',
+    baseURL: '/login',
+    headers: {
+      'Content-Type': 'application/vnd.api+json',
+      'Accept': 'application/vnd.api+json'
+    }
   };
 
   ENV['ember-simple-auth-token'] = {
@@ -34,7 +39,11 @@ module.exports = function(environment) {
     serverTokenRefreshEndpoint: 'http://localhost:3000/auth_user',
     identificationField: 'email',
     refreshAccessTokens: true,
-    refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
+    refreshLeeway: 300, // Refresh the token 5 minutes (300s) before it expires.
+    headers: {
+      'Accept': 'application/vnd.api+json',
+      'Content-Type': 'application/vnd.api+json'
+    }
   };
 
   if (environment === 'development') {

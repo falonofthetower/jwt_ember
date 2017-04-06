@@ -8,7 +8,7 @@ export default Ember.Service.extend({
   store: service(),
 
   load() {
-    let userId = this.get('session.data.authenticated.user_id');
+    let userId = this.get('session.data.authenticated.user.id');
     if (!isEmpty(userId)) {
       return this.get('store').findRecord('user', userId).then((user) => {
         this.set('user', user);

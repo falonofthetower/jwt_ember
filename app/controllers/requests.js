@@ -1,17 +1,18 @@
 import Ember from 'ember';
 import config from 'frontend/config/environment';
 
+const { service } = Ember.inject;
+
 export default Ember.Controller.extend({
-  cableService: Ember.inject.service('cable'),
+  cableService: service('cable'),
+  store: service('store'),
 
   setupSubscription: Ember.on('init', function() {
     var consumer = this.get('cableService').createConsumer(config.APP.websocket_host);
-    var subscription = consumer.subscriptions.create("AssignmentsChannel", {
+    var store = this.get('store');
+    consumer.subscriptions.create("AssignmentsChannel", {
       received: (data) => {
-        this.get('store').findRecord('assignment', data.id, { reload: true }).then(function(assignment) {
-          assignment.set('status', data.status);
-          assignment.get('assigner');
-        });
+        store.pushPayload(data);
       }
     });
   })

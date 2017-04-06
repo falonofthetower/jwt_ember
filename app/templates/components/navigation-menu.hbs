@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs">
+  {{#if session.isAuthenticated}}
+    {{#menu-tab}}
+      {{#link-to 'assignments'}}Assignments{{/link-to}}
+    {{/menu-tab}}
+    {{#menu-tab}}
+      {{#link-to 'requests'}}Requests{{/link-to}}
+    {{/menu-tab}}
+    {{#menu-tab}}
+      {{#link-to 'todos'}}Todos{{/link-to}}
+    {{/menu-tab}}
+    {{#menu-tab}}
+      <a {{action 'invalidateSession'}}>{{currentUser.user.email}} Logout</a>
+    {{/menu-tab}}
+  {{else}}
+    {{#menu-tab}}
+      {{#link-to 'login'}}Login{{/link-to}}
+    {{/menu-tab}}
+    {{#menu-tab}}
+      {{#link-to 'signup'}}Sign Up{{/link-to}}
+    {{/menu-tab}}
+  {{/if}}
+</ul>
